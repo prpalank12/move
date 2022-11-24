@@ -15,10 +15,7 @@ variables:
   buildConfiguration: 'Release'
 
 steps:
-- task: MSBuild@1
-  inputs:
-   solution: '**/*.sln' 
-   msbuildVersion: '4.0' 
+
   
 - task: PublishBuildArtifacts@1
   inputs:
