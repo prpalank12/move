@@ -9,9 +9,32 @@ trigger:
 pool:
   vmImage: 'windows-latest'
 
-steps:
-- task: PublishBuildArtifacts@1
+stages:
+
+ - stage: Build
+   jobs:
+   - job: Build
+     steps:
+      -
+      - task: PublishBuildArtifacts@1
+        inputs:
+          PathtoPublish: 'moveFile'
+          ArtifactName: 'drop'
+          publishLocation: 'Container'
+
+ 
+  - stage: Release
+- task: PowerShell@2
+  displayName: 'PowerShell Script'
   inputs:
-    PathtoPublish: 'moveFile'
-    ArtifactName: 'drop'
-    publishLocation: 'Container'
+    targetType: filePath
+    filePath: './$(System.DefaultWorkingDirectory)/_prpalank12.move/drop/stop.ps1'
+
+- task: WindowsMachineFileCopy@2
+    displayName: 'Copy files'
+    inputs:
+    SourcePath: '$(System.DefaultWorkingDirectory)/_prpalank12.move/drop/App.config'
+    MachineNames: 52.183.141.200
+    AdminUserName: 'vc_candidate11'
+    AdminPassword: 'eSlY8U#8#5p4'
+    TargetPath: 'C:\Users\TEMP\Desktop'
