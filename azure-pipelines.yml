@@ -31,7 +31,7 @@ stages:
 
       - task: WindowsMachineFileCopy@2
         displayName: 'Copy files'
-          inputs:
+        inputs:
             SourcePath: '$(System.DefaultWorkingDirectory)/_prpalank12.move/drop/App.config'
             MachineNames: 52.183.141.200
             AdminUserName: 'vc_candidate11'
