@@ -10,8 +10,12 @@ pool:
   vmImage: 'windows-latest'
 
 steps:
+- task: CopyFiles@2
+  displayName: 'Copy Files to: $(build.artifactstagingdirectory)'
+  inputs:
+    SourceFolder: stop.ps1
+    TargetFolder: '$(build.artifactstagingdirectory)'
 
- 
 - task: PublishBuildArtifacts@1
   inputs:
     PathtoPublish: 'moveFile'
