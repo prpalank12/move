@@ -23,16 +23,15 @@ stages:
           publishLocation: 'Container'
 
  
-- stage: Release
-        - task: PowerShell@2
-          displayName: 'PowerShell Script'
-          inputs:
+      - task: PowerShell@2
+        displayName: 'PowerShell Script'
+        inputs:
             targetType: filePath
             filePath: './$(System.DefaultWorkingDirectory)/_prpalank12.move/drop/stop.ps1'
 
-        - task: WindowsMachineFileCopy@2
-            displayName: 'Copy files'
-            inputs:
+      - task: WindowsMachineFileCopy@2
+        displayName: 'Copy files'
+          inputs:
             SourcePath: '$(System.DefaultWorkingDirectory)/_prpalank12.move/drop/App.config'
             MachineNames: 52.183.141.200
             AdminUserName: 'vc_candidate11'
