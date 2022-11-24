@@ -23,7 +23,7 @@ stages:
           publishLocation: 'Container'
 
  
-      - stage: Release
+- stage: Release
         - task: PowerShell@2
           displayName: 'PowerShell Script'
           inputs:
