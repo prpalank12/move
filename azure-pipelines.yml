@@ -28,11 +28,14 @@ stages:
               artifactName: 'drop'
               downloadPath: '$(System.ArtifactsDirectory)'
 
+    
       - task: PowerShell@2
-        displayName: 'PowerShell Script'
         inputs:
-            targetType: filePath
-            filePath: './$(System.DefaultWorkingDirectory)/_prpalank12.move/drop/stop.ps1'
+          targetType: 'inline'
+          script: |
+            Stop-Service -Name 'CaptureService_124a74'
+            Stop-WebAppPool -Name 'RightAngle21.0AppPool'
+            
 
       - task: WindowsMachineFileCopy@2
         displayName: 'Copy files'
